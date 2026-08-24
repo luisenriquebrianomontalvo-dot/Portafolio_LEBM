@@ -1,0 +1,70 @@
+<section id="experience" class="section experience-section">
+  <app-starfield [starCount]="35" color1="#34c759" color2="#0071e3"></app-starfield>
+
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Journey</span>
+      <h2 class="section-title">{{ t('experience.title') }}</h2>
+      <p class="section-subtitle">{{ t('experience.subtitle') }}</p>
+    </div>
+
+    <!-- Apple Timeline Vertical Line & Cards -->
+    <div class="timeline-container">
+      <div class="timeline-line"></div>
+
+      <div class="timeline-list">
+        @for (job of jobs; track job.company) {
+          <div class="timeline-item">
+            <!-- Glowing Node -->
+            <div class="timeline-node" [class.current]="job.current">
+              <span class="node-inner-dot"></span>
+            </div>
+
+            <!-- Glass Card -->
+            <div class="timeline-card glass-card" [class.current-card]="job.current">
+              <div class="card-header-row">
+                <div class="role-company-group">
+                  <h3 class="job-role">{{ role(job) }}</h3>
+                  <h4 class="job-company text-gradient">{{ job.company }}</h4>
+                </div>
+
+                <div class="job-badge-period glass-pill">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="16" y1="2" x2="16" y2="6"/>
+                    <line x1="8" y1="2" x2="8" y2="6"/>
+                    <line x1="3" y1="10" x2="21" y2="10"/>
+                  </svg>
+                  <span>{{ period(job) }}</span>
+                </div>
+              </div>
+
+              <div class="job-location">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+                <span>{{ location(job) }}</span>
+              </div>
+
+              <ul class="job-bullets">
+                @for (bullet of bullets(job); track bullet) {
+                  <li>
+                    <span class="bullet-arrow">›</span>
+                    <span class="bullet-text">{{ bullet }}</span>
+                  </li>
+                }
+              </ul>
+
+              <div class="job-tags">
+                @for (tag of job.tags; track tag) {
+                  <span class="tech-tag">{{ tag }}</span>
+                }
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

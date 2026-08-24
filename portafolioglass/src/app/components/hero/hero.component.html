@@ -1,0 +1,155 @@
+<section id="hero" class="hero-section">
+  <!-- 3D Liquid Waves Canvas -->
+  <canvas #waveCanvas class="hero-wave-canvas"></canvas>
+
+  <div class="container hero-container">
+    <div class="hero-grid">
+      <!-- Left Content -->
+      <div class="hero-left">
+        <!-- Status Badge -->
+        <div class="hero-badge-wrap">
+          <div class="status-badge glass-pill">
+            <span class="status-dot"></span>
+            <span class="status-text">{{ t('hero.badge') }}</span>
+          </div>
+        </div>
+
+        <!-- Main Title Group -->
+        <div class="hero-title-group">
+          <p class="hero-greeting">{{ t('hero.greeting') }}</p>
+          <h1 class="hero-name">
+            {{ t('hero.name') }}
+          </h1>
+          <h2 class="hero-role">{{ t('hero.title') }}</h2>
+          <p class="hero-subtitle">{{ t('hero.subtitle') }}</p>
+
+          <div class="hero-location glass-pill">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>{{ t('hero.location') }}</span>
+          </div>
+        </div>
+
+        <!-- Mobile Avatar Display -->
+        <div class="hero-avatar-mobile">
+          <div class="glass-avatar-card">
+            <div class="avatar-glow-ring"></div>
+            <div class="avatar-img-container">
+              <div class="avatar-placeholder">
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+                <span>Foto de Perfil</span>
+              </div>
+            </div>
+            <div class="avatar-floating-tag glass-pill">
+              <span class="status-dot"></span>
+              {{ t('hero.tag2') }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="hero-actions">
+          <button class="btn btn-primary" (click)="scrollToContact()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span>{{ t('hero.download') }}</span>
+          </button>
+
+          <button class="btn btn-glass" (click)="scrollToProjects()">
+            <span>{{ t('hero.viewProjects') }}</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Social Badges -->
+        <div class="hero-socials">
+          <a href="#contact" class="social-glass-btn" aria-label="LinkedIn">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href="#contact" class="social-glass-btn" aria-label="GitHub">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+          </a>
+          <a href="#contact" class="social-glass-btn" aria-label="Email">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Quick Stats Pill Row -->
+        <div class="hero-stats-row">
+          <div class="stat-pill glass-card">
+            <span class="stat-num">+3</span>
+            <span class="stat-label">{{ t('hero.statYears') }}</span>
+          </div>
+          <div class="stat-pill glass-card">
+            <span class="stat-num">+10</span>
+            <span class="stat-label">{{ t('hero.statProjects') }}</span>
+          </div>
+          <div class="stat-pill glass-card">
+            <span class="stat-num">+15</span>
+            <span class="stat-label">{{ t('hero.statTech') }}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Desktop Avatar Card (Placeholders only) -->
+      <div class="hero-right">
+        <div class="hero-avatar-wrapper">
+          <div class="hero-right-card glass-card">
+            <div class="avatar-glow-ring"></div>
+            
+            <div class="avatar-img-container">
+              <div class="avatar-placeholder">
+                <div class="placeholder-icon-circle glass">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </div>
+                <span class="placeholder-text">Espacio para Foto</span>
+                <span class="placeholder-sub">Sube tu imagen aquí</span>
+              </div>
+            </div>
+            
+            <!-- Floating Interactive Glass Badges OUTSIDE Frame -->
+            <div class="floating-badge badge-top-right glass-pill">
+              <span class="badge-icon">⚡</span>
+              <span>{{ t('hero.tag1') }}</span>
+            </div>
+
+            <div class="floating-badge badge-bottom-left glass-pill">
+              <span class="status-dot"></span>
+              <span>{{ t('hero.tag2') }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="scroll-cue" (click)="scrollToProjects()">
+    <div class="scroll-capsule glass-pill">
+      <div class="scroll-wheel"></div>
+    </div>
+    <span class="scroll-text">scroll</span>
+  </div>
+</section>

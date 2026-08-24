@@ -1,0 +1,90 @@
+<section id="projects" class="section projects-section">
+  <app-starfield [starCount]="40" color1="#ff9500" color2="#ff2d55"></app-starfield>
+
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Portfolio</span>
+      <h2 class="section-title">{{ t('projects.title') }}</h2>
+      <p class="section-subtitle">{{ t('projects.subtitle') }}</p>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      @for (project of projects; track project.id) {
+        <article 
+          #card
+          class="project-glass-card glass-card"
+          [class.featured]="project.featured"
+          (mousemove)="onCardMouseMove($event, card)"
+          (mouseleave)="onCardMouseLeave(card)">
+          
+          <!-- Card Image Thumbnail Container with Placeholder Fallback -->
+          <div class="project-media-wrap">
+            @if (project.image) {
+              <img 
+                [src]="project.image" 
+                [alt]="title(project)" 
+                class="project-thumb" 
+                loading="lazy"
+                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+            }
+            
+            <!-- Default / Empty Placeholder State for Image Uploads -->
+            <div class="project-image-placeholder" [style.display]="project.image ? 'none' : 'flex'">
+              <div class="placeholder-icon-box glass">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <rect x="3" y="3" width="18" height="18" rx="3" ry="3"/>
+                  <circle cx="8.5" cy="8.5" r="1.5"/>
+                  <polyline points="21 15 16 10 5 21"/>
+                </svg>
+              </div>
+              <span class="placeholder-label">{{ t('projects.placeholder') }}</span>
+              <span class="placeholder-hint">16:10 / 1920x1200</span>
+            </div>
+            
+            <div class="project-media-overlay">
+              @if (project.liveUrl) {
+                <a [href]="project.liveUrl" target="_blank" class="live-action-btn glass-pill" aria-label="Live Demo">
+                  <span>{{ t('projects.live') }}</span>
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="7" y1="17" x2="17" y2="7"/>
+                    <polyline points="7 7 17 7 17 17"/>
+                  </svg>
+                </a>
+              }
+            </div>
+          </div>
+
+          <!-- Card Content Body -->
+          <div class="project-body">
+            <div class="project-tags-row">
+              @for (tag of project.tags; track tag) {
+                <span class="tech-tag">{{ tag }}</span>
+              }
+            </div>
+
+            <h3 class="project-title">{{ title(project) }}</h3>
+            <p class="project-desc">{{ desc(project) }}</p>
+
+            <div class="project-footer">
+              @if (project.liveUrl) {
+                <a [href]="project.liveUrl" target="_blank" class="btn-card-link">
+                  <span>{{ t('projects.live') }}</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </a>
+              }
+              @if (project.githubUrl) {
+                <a [href]="project.githubUrl" target="_blank" class="btn-card-ghost-link">
+                  <span>{{ t('projects.code') }}</span>
+                </a>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+  </div>
+</section>

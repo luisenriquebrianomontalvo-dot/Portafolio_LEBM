@@ -1,0 +1,495 @@
+/* ==========================================================================
+   Apple iOS Glassmorphism Design System — Alejandro Rosas Portfolio
+   ========================================================================== */
+
+:root, [data-theme="light"] {
+  /* Backgrounds */
+  --bg-primary: #fbfbfd;
+  --bg-secondary: #f4f5f8;
+  --bg-tertiary: #ebeef5;
+  
+  /* Apple Glassmorphic Surfaces */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-bg-hover: rgba(255, 255, 255, 0.82);
+  --glass-bg-active: rgba(255, 255, 255, 0.92);
+  --glass-bg-subtle: rgba(255, 255, 255, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --glass-border-subtle: rgba(0, 0, 0, 0.06);
+  --glass-border-glow: rgba(0, 113, 227, 0.35);
+  
+  /* Specular Highlights & Soft Layered Shadows */
+  --glass-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), 0 20px 40px -15px rgba(0, 113, 227, 0.07);
+  --glass-shadow-hover: 0 20px 50px -10px rgba(0, 113, 227, 0.16), 0 10px 20px -5px rgba(0, 0, 0, 0.04);
+  --glass-specular: inset 0 1px 1.5px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.02);
+  
+  /* Typography */
+  --text-primary: #1d1d1f;
+  --text-secondary: #515154;
+  --text-muted: #86868b;
+  --text-light: #ffffff;
+  
+  /* Apple Colors */
+  --accent-blue: #0071e3;
+  --accent-blue-hover: #0077ed;
+  --accent-cyan: #00c7be;
+  --accent-green: #34c759;
+  --accent-purple: #af52de;
+  --accent-orange: #ff9500;
+  --accent-pink: #ff2d55;
+  --accent-indigo: #5856d6;
+  
+  /* Gradients */
+  --gradient-1: linear-gradient(135deg, #0071e3 0%, #00c7be 100%);
+  --gradient-2: linear-gradient(135deg, #af52de 0%, #0071e3 100%);
+  --gradient-3: linear-gradient(135deg, #ff9500 0%, #ff2d55 100%);
+  --gradient-4: linear-gradient(135deg, #34c759 0%, #00c7be 100%);
+  --gradient-hero: linear-gradient(135deg, #0071e3 0%, #43b929 100%);
+  
+  /* Navigation */
+  --nav-bg: rgba(255, 255, 255, 0.75);
+  --nav-border: rgba(255, 255, 255, 0.9);
+  --nav-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.08), inset 0 1px 1px rgba(255, 255, 255, 1);
+  
+  /* Scrollbar */
+  --scrollbar-track: rgba(0, 0, 0, 0.02);
+  --scrollbar-thumb: rgba(0, 113, 227, 0.35);
+  --scrollbar-thumb-hover: rgba(0, 113, 227, 0.65);
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0a0c10;
+  --bg-secondary: #12151c;
+  --bg-tertiary: #191d26;
+  
+  --glass-bg: rgba(22, 26, 35, 0.65);
+  --glass-bg-hover: rgba(30, 35, 48, 0.82);
+  --glass-bg-active: rgba(38, 44, 60, 0.92);
+  --glass-bg-subtle: rgba(22, 26, 35, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-subtle: rgba(255, 255, 255, 0.06);
+  --glass-border-glow: rgba(0, 113, 227, 0.5);
+  
+  --glass-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 20px 40px -15px rgba(0, 113, 227, 0.15);
+  --glass-shadow-hover: 0 20px 50px -10px rgba(0, 113, 227, 0.3), 0 10px 20px -5px rgba(0, 0, 0, 0.4);
+  --glass-specular: inset 0 1px 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4);
+  
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-muted: #6e6e73;
+  --text-light: #ffffff;
+  
+  --nav-bg: rgba(18, 21, 28, 0.78);
+  --nav-border: rgba(255, 255, 255, 0.15);
+  --nav-shadow: 0 12px 36px -8px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.15);
+  
+  --scrollbar-track: rgba(255, 255, 255, 0.02);
+  --scrollbar-thumb: rgba(0, 113, 227, 0.45);
+  --scrollbar-thumb-hover: rgba(0, 113, 227, 0.8);
+}
+
+/* ==========================================================================
+   Reset & Base Typography
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Plus Jakarta Sans', 'Inter', 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  transition: background-color 0.4s ease, color 0.4s ease;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Custom Scrollbar
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 7px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 20px;
+  border: 1.5px solid transparent;
+  background-clip: content-box;
+  transition: background-color 0.2s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scrollbar-thumb-hover);
+}
+
+/* ==========================================================================
+   Apple Glassmorphism Core Classes
+   ========================================================================== */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-specular);
+}
+
+.glass-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-specular);
+  border-radius: 24px;
+  padding: 1.75rem;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.4s ease,
+              background 0.4s ease;
+  overflow: hidden;
+
+  /* Sheen shine overlay on hover */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.35),
+      transparent
+    );
+    transform: skewX(-25deg);
+    pointer-events: none;
+    transition: left 0.75s ease;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-glow);
+    box-shadow: var(--glass-shadow-hover), var(--glass-specular);
+
+    &::before {
+      left: 140%;
+    }
+  }
+}
+
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04), var(--glass-specular);
+  color: var(--text-primary);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+
+  &:hover {
+    background: var(--glass-bg-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 113, 227, 0.12), var(--glass-specular);
+  }
+}
+
+/* ==========================================================================
+   Section Layout & Containers
+   ========================================================================== */
+.section {
+  min-height: 100vh;
+  padding: 7rem 2rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 4rem auto;
+  position: relative;
+  z-index: 2;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: rgba(0, 113, 227, 0.08);
+  color: var(--accent-blue);
+  border: 1px solid rgba(0, 113, 227, 0.18);
+  margin-bottom: 1.25rem;
+  backdrop-filter: blur(10px);
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   Apple-Style Buttons
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.85rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border: none;
+  outline: none;
+  letter-spacing: -0.01em;
+  font-family: inherit;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--accent-blue);
+  color: #ffffff;
+  box-shadow: 0 4px 18px rgba(0, 113, 227, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+
+  &:hover {
+    background: var(--accent-blue-hover);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 28px rgba(0, 113, 227, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+.btn-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-specular);
+
+  &:hover {
+    background: var(--glass-bg-hover);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 113, 227, 0.15), var(--glass-specular);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+}
+
+.btn-icon {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Typography Helpers & Gradient Text
+   ========================================================================== */
+.text-gradient {
+  background: var(--gradient-1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.text-gradient-hero {
+  background: var(--gradient-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.text-gradient-2 {
+  background: var(--gradient-2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+.text-gradient-warm {
+  background: var(--gradient-3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   Apple Ambient Liquid Mesh Backgrounds
+   ========================================================================== */
+.ambient-bg-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.65;
+  will-change: transform;
+  animation: floatOrb 20s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  width: 650px;
+  height: 650px;
+  top: -10%;
+  left: 15%;
+  background: radial-gradient(circle, rgba(0, 113, 227, 0.22) 0%, rgba(0, 199, 190, 0.12) 60%, transparent 80%);
+  animation-duration: 22s;
+}
+
+.orb-2 {
+  width: 550px;
+  height: 550px;
+  top: 30%;
+  right: -5%;
+  background: radial-gradient(circle, rgba(175, 82, 222, 0.2) 0%, rgba(88, 86, 214, 0.12) 60%, transparent 80%);
+  animation-duration: 26s;
+  animation-delay: -5s;
+}
+
+.orb-3 {
+  width: 700px;
+  height: 700px;
+  bottom: 20%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(52, 199, 89, 0.18) 0%, rgba(0, 199, 190, 0.12) 60%, transparent 80%);
+  animation-duration: 24s;
+  animation-delay: -10s;
+}
+
+.orb-4 {
+  width: 600px;
+  height: 600px;
+  bottom: -10%;
+  right: 15%;
+  background: radial-gradient(circle, rgba(255, 149, 0, 0.18) 0%, rgba(255, 45, 85, 0.12) 60%, transparent 80%);
+  animation-duration: 28s;
+  animation-delay: -15s;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(60px, 40px) scale(1.1);
+  }
+  100% {
+    transform: translate(-40px, 80px) scale(0.95);
+  }
+}
+
+/* ==========================================================================
+   Responsive Utilities
+   ========================================================================== */
+@media (max-width: 992px) {
+  .section {
+    padding: 5rem 1.5rem;
+  }
+  .section-title {
+    font-size: 2.4rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 1rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+  .glass-card {
+    padding: 1.35rem;
+    border-radius: 20px;
+  }
+  .ambient-orb {
+    filter: blur(60px);
+    opacity: 0.5;
+  }
+}

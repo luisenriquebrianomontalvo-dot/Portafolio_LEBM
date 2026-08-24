@@ -1,0 +1,39 @@
+<section id="skills" class="section skills-section">
+  <app-starfield [starCount]="35" color1="#af52de" color2="#0071e3"></app-starfield>
+
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Capabilities</span>
+      <h2 class="section-title">{{ t('skills.title') }}</h2>
+      <p class="section-subtitle">{{ t('skills.subtitle') }}</p>
+    </div>
+
+    <!-- Apple Segmented Control Tab Bar -->
+    <div class="skills-segment-wrapper">
+      <div class="segmented-control glass">
+        @for (cat of categories; track cat.id) {
+          <button 
+            class="segment-tab-btn" 
+            [class.active]="activeTab() === cat.id"
+            (click)="setTab(cat.id)">
+            <span class="tab-icon">{{ cat.icon }}</span>
+            <span class="tab-label">{{ t(cat.labelKey) }}</span>
+          </button>
+        }
+      </div>
+    </div>
+
+    <!-- Skills Dynamic Glass Grid -->
+    <div class="skills-grid">
+      @for (skill of filteredSkills; track skill.name) {
+        <div class="skill-card-glass glass-card">
+          <div class="skill-icon-wrap glass">
+            <img [src]="skill.icon" [alt]="skill.name" class="skill-img" loading="lazy" onerror="this.src='/favicon.ico'">
+          </div>
+          <span class="skill-name">{{ skill.name }}</span>
+          <span class="skill-glow-dot"></span>
+        </div>
+      }
+    </div>
+  </div>
+</section>

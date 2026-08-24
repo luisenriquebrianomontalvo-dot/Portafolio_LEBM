@@ -1,0 +1,173 @@
+.experience-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 860px;
+  margin: 0 auto;
+  padding-left: 2.5rem;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 11px;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-blue) 0%, rgba(0, 199, 190, 0.4) 50%, rgba(175, 82, 222, 0.2) 100%);
+  border-radius: 2px;
+}
+
+.timeline-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.timeline-item {
+  position: relative;
+}
+
+/* ---------------- Timeline Node ---------------- */
+.timeline-node {
+  position: absolute;
+  left: -2.5rem;
+  top: 24px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(15px);
+  border: 2px solid var(--glass-border);
+  box-shadow: 0 0 15px rgba(0, 113, 227, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  .node-inner-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-blue);
+  }
+
+  &.current {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 20px rgba(52, 199, 89, 0.4);
+
+    .node-inner-dot {
+      background: var(--accent-green);
+      animation: pulseNode 2s infinite ease-in-out;
+    }
+  }
+}
+
+@keyframes pulseNode {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.4); }
+}
+
+/* ---------------- Timeline Card ---------------- */
+.timeline-card {
+  padding: 1.8rem 2rem;
+  border-radius: 26px;
+
+  &.current-card {
+    border-color: rgba(52, 199, 89, 0.3);
+  }
+}
+
+.card-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.job-role {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.job-company {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.job-badge-period {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.job-location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+.job-bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-size: 0.94rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  .bullet-arrow {
+    color: var(--accent-blue);
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1.3;
+  }
+}
+
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+  .timeline-container {
+    padding-left: 1.75rem;
+  }
+  .timeline-line {
+    left: 8px;
+  }
+  .timeline-node {
+    left: -1.75rem;
+    width: 18px;
+    height: 18px;
+    .node-inner-dot {
+      width: 6px;
+      height: 6px;
+    }
+  }
+  .timeline-card {
+    padding: 1.35rem 1.2rem;
+  }
+  .job-role {
+    font-size: 1.1rem;
+  }
+}
