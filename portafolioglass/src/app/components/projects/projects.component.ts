@@ -39,7 +39,7 @@ export class ProjectsComponent implements AfterViewInit {
       descriptionEn: 'Academic lab using two virtual machines. Windows captures keyboard events with Python and pynput, adds timestamps and local persistence, and sends the records over TCP to a Kali Linux server.',
       image: '/assets/images/wap-ciberseguridad.png',
       tags: ['Python', 'TCP/IP', 'Kali Linux', 'Windows 10', 'VirtualBox', 'Ciberseguridad'],
-      liveUrl:  '/assets/proyectos/actividad03/index.html',
+      liveUrl:  '/Portafolio_LEBM/assets/proyectos/actividad03/index.html',
       githubUrl: '#',
       featured: true
     },
