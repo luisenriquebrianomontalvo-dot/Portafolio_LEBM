@@ -33,72 +33,44 @@ export class ProjectsComponent implements AfterViewInit {
   projects: Project[] = [
     {
       id: 1,
-      titleEs: 'Proyecto Destacado 1',
-      titleEn: 'Featured Project 1',
-      descriptionEs: 'Descripción breve de tu primer proyecto destacado. Explica el problema que resuelve, las funciones clave y la arquitectura utilizada.',
-      descriptionEn: 'Brief description of your first featured project. Explain the problem solved, key features, and architecture used.',
-      image: '',
-      tags: ['Angular / React', 'TypeScript', 'Node.js', 'PostgreSQL'],
+      titleEs: 'Laboratorio de Captura y Transmisión de Eventos',
+      titleEn: 'Event Capture & Transmission Cybersecurity Lab',
+      descriptionEs: 'Laboratorio académico con dos máquinas virtuales. Windows captura eventos de teclado con Python y pynput, agrega marcas temporales y persistencia local, y transmite los registros por TCP hacia un servidor Kali Linux.',
+      descriptionEn: 'Academic lab using two virtual machines. Windows captures keyboard events with Python and pynput, adds timestamps and local persistence, and sends the records over TCP to a Kali Linux server.',
+      image: '/assets/images/wap-ciberseguridad.png',
+      tags: ['Python', 'TCP/IP', 'Kali Linux', 'Windows 10', 'VirtualBox', 'Ciberseguridad'],
       liveUrl: '#',
       githubUrl: '#',
       featured: true
     },
     {
       id: 2,
-      titleEs: 'Plataforma Web E-Commerce',
-      titleEn: 'E-Commerce Web Platform',
-      descriptionEs: 'Tienda en línea moderna con catálogo dinámico, carrito de compras reactivo y pasarela de pago integrada.',
-      descriptionEn: 'Modern online store with dynamic catalog, reactive shopping cart, and integrated checkout.',
+      titleEs: 'Levantamiento de Infraestructura CCTV',
+      titleEn: 'CCTV Infrastructure Site Survey',
+      descriptionEs: 'Levantamiento técnico para un proyecto de videovigilancia de gran escala, considerando más de 150 cámaras, racks, switches, cableado estructurado, charolas portacables y estimación de materiales.',
+      descriptionEn: 'Technical site survey for a large-scale video surveillance project involving more than 150 cameras, racks, switches, structured cabling, cable trays, and material estimation.',
       image: '',
-      tags: ['Next.js', 'TailwindCSS', 'Stripe API', 'MongoDB'],
-      liveUrl: '#',
-      githubUrl: '#',
+      tags: ['CCTV', 'Redes', 'UTP', 'Racks', 'Infraestructura'],
       featured: true
     },
     {
       id: 3,
-      titleEs: 'Dashboard Administrativo & Analytics',
-      titleEn: 'Admin Dashboard & Analytics',
-      descriptionEs: 'Panel de control con métricas en tiempo real, gráficos interactivos y gestión integral de usuarios.',
-      descriptionEn: 'Control panel with real-time metrics, interactive charts, and user management system.',
+      titleEs: 'Migración y Configuración ZKTeco / ZKTime.Net',
+      titleEn: 'ZKTeco / ZKTime.Net Migration & Configuration',
+      descriptionEs: 'Configuración de equipos biométricos, direccionamiento IP, respaldo de información y preparación de la migración del sistema ZKTime.Net entre equipos.',
+      descriptionEn: 'Biometric device configuration, IP addressing, data backup, and preparation for migrating a ZKTime.Net system between computers.',
       image: '',
-      tags: ['TypeScript', 'Three.js / Charts', 'REST API', 'Docker'],
-      liveUrl: '#',
-      githubUrl: '#',
+      tags: ['ZKTeco', 'ZKTime.Net', 'Redes', 'Soporte TI', 'Migración'],
       featured: true
     },
     {
       id: 4,
-      titleEs: 'Aplicación Móvil / Web App',
-      titleEn: 'Mobile / Web Application',
-      descriptionEs: 'Aplicación multiplataforma con diseño responsivo, autenticación segura y sincronización en la nube.',
-      descriptionEn: 'Cross-platform application with responsive design, secure auth, and cloud synchronization.',
+      titleEs: 'Soporte de Correo Corporativo y Outlook',
+      titleEn: 'Corporate Email & Outlook Support',
+      descriptionEs: 'Diagnóstico de conectividad POP3, administración y migración de archivos PST, configuración de cuentas y resolución de incidencias de correo corporativo.',
+      descriptionEn: 'POP3 connectivity troubleshooting, PST file administration and migration, account configuration, and corporate email incident resolution.',
       image: '',
-      tags: ['React Native / Web', 'Firebase', 'State Management'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      id: 5,
-      titleEs: 'Herramienta de Automatización & IA',
-      titleEn: 'AI & Automation Tool',
-      descriptionEs: 'Solución automatizada para optimización de flujos de trabajo con agentes inteligentes y procesamiento de datos.',
-      descriptionEn: 'Automated workflow optimization solution powered by intelligent agents and data processing.',
-      image: '',
-      tags: ['Python / Node.js', 'AI Agents', 'Automation', 'API'],
-      liveUrl: '#',
-      githubUrl: '#'
-    },
-    {
-      id: 6,
-      titleEs: 'Experiencia Interactiva 3D',
-      titleEn: '3D Interactive Experience',
-      descriptionEs: 'Experiencia interactiva visual en 3D/WebGL para presentaciones inmersivas de producto.',
-      descriptionEn: 'Visual 3D/WebGL interactive experience for immersive product showcases.',
-      image: '',
-      tags: ['Three.js', 'WebGL', 'GLSL Shaders', 'Web Audio'],
-      liveUrl: '#',
-      githubUrl: '#'
+      tags: ['Outlook', 'POP3', 'PST', 'PowerShell', 'Troubleshooting']
     }
   ];
 

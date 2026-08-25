@@ -33,69 +33,65 @@ export class ExperienceComponent implements AfterViewInit {
 
   jobs: Job[] = [
     {
-      company: 'Empresa Principal / Actual',
-      roleEs: 'Desarrollador Full Stack Senior / Lead',
-      roleEn: 'Senior Full Stack / Lead Developer',
-      periodEs: '2023 — Actualidad',
-      periodEn: '2023 — Present',
-      locationEs: 'Ciudad, País (o Remoto)',
-      locationEn: 'City, Country (or Remote)',
+      company: 'LEIVO',
+      roleEs: 'Practicante de Tecnologías de la Información',
+      roleEn: 'Information Technology Intern',
+      periodEs: '2026 — Actualidad',
+      periodEn: '2026 — Present',
+      locationEs: 'San Luis Potosí, México',
+      locationEn: 'San Luis Potosí, Mexico',
       current: true,
       bulletsEs: [
-        'Liderazgo en el diseño y desarrollo de aplicaciones web escalables con frameworks modernos.',
-        'Implementación de microservicios, APIs RESTful y arquitecturas en la nube.',
-        'Optimización de rendimiento en frontend y backend, mejorando tiempos de carga y respuesta.',
-        'Colaboración con equipos multidisciplinarios bajo metodologías ágiles (SCRUM/Kanban).'
+        'Soporte técnico a usuarios, equipos de cómputo, impresoras y correo corporativo.',
+        'Participación en levantamientos de redes, racks, cableado estructurado, fibra óptica y proyectos CCTV.',
+        'Configuración y migración de sistemas ZKTeco/ZKTime.Net y equipos de control de acceso.',
+        'Diagnóstico de conectividad, direccionamiento IP, servicios de red y troubleshooting en Windows y Linux.'
       ],
       bulletsEn: [
-        'Lead design and development of scalable web applications using modern frameworks.',
-        'Implementation of microservices, RESTful APIs, and cloud architectures.',
-        'Frontend and backend performance optimization, reducing latency and load times.',
-        'Cross-functional collaboration with product teams under agile methodologies.'
+        'Technical support for users, computers, printers, and corporate email.',
+        'Participation in network, rack, structured cabling, fiber-optic, and CCTV site surveys.',
+        'Configuration and migration of ZKTeco/ZKTime.Net and access-control systems.',
+        'Connectivity, IP addressing, network service, Windows, and Linux troubleshooting.'
       ],
-      tags: ['Angular / React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Docker', 'AWS']
+      tags: ['Soporte TI', 'Redes', 'CCTV', 'ZKTeco', 'Windows', 'Linux']
     },
     {
-      company: 'Segunda Empresa / Startup',
-      roleEs: 'Desarrollador Frontend & UI Specialist',
-      roleEn: 'Frontend Developer & UI Specialist',
-      periodEs: '2021 — 2023',
-      periodEn: '2021 — 2023',
-      locationEs: 'Ciudad, País',
-      locationEn: 'City, Country',
+      company: 'Plaza de la Tecnología',
+      roleEs: 'Técnico de Soporte',
+      roleEn: 'Technical Support Technician',
+      periodEs: 'Experiencia previa',
+      periodEn: 'Previous experience',
+      locationEs: 'San Luis Potosí, México',
+      locationEn: 'San Luis Potosí, Mexico',
       bulletsEs: [
-        'Desarrollo de interfaces de usuario dinámicas, responsivas y accesibles.',
-        'Integración con servicios backend y consumo de APIs en tiempo real.',
-        'Creación y mantenimiento de librerías de componentes UI reutilizables.',
-        'Implementación de pruebas unitarias y de integración para garantizar estabilidad.'
+        'Diagnóstico, mantenimiento y soporte de equipos de cómputo.',
+        'Instalación de sistemas operativos, software y componentes de hardware.',
+        'Atención y resolución de incidencias técnicas para usuarios.'
       ],
       bulletsEn: [
-        'Development of dynamic, responsive, and accessible user interfaces.',
-        'Integration with backend services and real-time API consumption.',
-        'Creation and maintenance of reusable UI component libraries.',
-        'Implementation of unit and integration tests to ensure stability.'
+        'Computer diagnostics, maintenance, and technical support.',
+        'Operating system, software, and hardware component installation.',
+        'User assistance and resolution of technical incidents.'
       ],
-      tags: ['JavaScript', 'TypeScript', 'CSS3 / SCSS', 'REST APIs', 'Git']
+      tags: ['Hardware', 'Windows', 'Soporte Técnico', 'Mantenimiento']
     },
     {
-      company: 'Universidad / Formación Académica',
-      roleEs: 'Ingeniería en Tecnologías de la Información / Software',
-      roleEn: 'Software / Information Technology Engineering',
-      periodEs: '2019 — 2023',
-      periodEn: '2019 — 2023',
-      locationEs: 'Universidad / Institución Educativa',
-      locationEn: 'University / Educational Institution',
+      company: 'ZARA',
+      roleEs: 'Operaciones',
+      roleEn: 'Operations',
+      periodEs: 'Ago 2021 — Dic 2024',
+      periodEn: 'Aug 2021 — Dec 2024',
+      locationEs: 'San Luis Potosí, México',
+      locationEn: 'San Luis Potosí, Mexico',
       bulletsEs: [
-        'Formación integral en algoritmos, estructuras de datos, patrones de diseño y bases de datos.',
-        'Desarrollo de proyectos de software académico e investigación aplicada.',
-        'Participación en hackathons y comunidades de desarrollo tecnológico.'
+        'Experiencia en operación, organización, atención al cliente y trabajo en equipo.',
+        'Cumplimiento de procesos y actividades en un entorno de trabajo dinámico.'
       ],
       bulletsEn: [
-        'Comprehensive education in algorithms, data structures, design patterns, and databases.',
-        'Academic software projects and applied technical research.',
-        'Participation in hackathons and developer communities.'
+        'Experience in operations, organization, customer service, and teamwork.',
+        'Process execution and task management in a fast-paced work environment.'
       ],
-      tags: ['Educación Superior', 'Ingeniería de Software', 'Algoritmos']
+      tags: ['Operaciones', 'Atención al Cliente', 'Trabajo en Equipo']
     }
   ];
 

@@ -30,53 +30,26 @@ export class CertificationsComponent implements AfterViewInit {
 
   certifications: Certification[] = [
     {
-      name: 'Certificación Profesional 1',
-      issuer: 'Institución / Plataforma Emisora',
-      date: '2024',
-      url: '#',
-      icon: '🏆',
+      name: 'Ingeniería en Tecnologías de la Información',
+      issuer: 'Universidad Politécnica de San Luis Potosí',
+      date: 'En curso',
+      icon: '🎓',
       color: 'var(--accent-blue)'
     },
     {
-      name: 'Certificación en Desarrollo Cloud',
-      issuer: 'AWS / Google Cloud / Azure',
-      date: '2024',
-      url: '#',
-      icon: '☁️',
+      name: 'Cybersecurity and Cloud Fundamentals 1.0',
+      issuer: 'Fortinet',
+      date: '2026',
+      icon: '🛡️',
       color: 'var(--accent-cyan)'
     },
     {
-      name: 'Especialización en Frontend Moderno',
-      issuer: 'Plataforma Educativa',
-      date: '2023',
-      url: '#',
-      icon: '💻',
+      name: 'Formación en Instalación de Fibra Óptica',
+      issuer: 'FOA - Nivel 1 / Formación académica',
+      date: 'En curso',
+      icon: '🌐',
       color: 'var(--accent-green)'
-    },
-    {
-      name: 'Certificación en Arquitectura de Software',
-      issuer: 'Institución Tecnológica',
-      date: '2023',
-      url: '#',
-      icon: '⚙️',
-      color: 'var(--accent-orange)'
-    },
-    {
-      name: 'Gestión Ágil de Proyectos (SCRUM)',
-      issuer: 'Scrum Alliance / Agile Org',
-      date: '2022',
-      url: '#',
-      icon: '🚀',
-      color: 'var(--accent-purple)'
-    },
-    {
-      name: 'Certificación en Bases de Datos & SQL',
-      issuer: 'Institución Certificadora',
-      date: '2022',
-      url: '#',
-      icon: '🗄️',
-      color: 'var(--accent-pink)'
-    },
+    }
   ];
 
   ngAfterViewInit() {
