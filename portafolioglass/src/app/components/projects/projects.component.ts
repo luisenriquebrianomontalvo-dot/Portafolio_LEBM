@@ -37,10 +37,9 @@ export class ProjectsComponent implements AfterViewInit {
       titleEn: 'Event Capture & Transmission Cybersecurity Lab',
       descriptionEs: 'Laboratorio académico con dos máquinas virtuales. Windows captura eventos de teclado con Python y pynput, agrega marcas temporales y persistencia local, y transmite los registros por TCP hacia un servidor Kali Linux.',
       descriptionEn: 'Academic lab using two virtual machines. Windows captures keyboard events with Python and pynput, adds timestamps and local persistence, and sends the records over TCP to a Kali Linux server.',
-      image: '/assets/images/wap-ciberseguridad.png',
+      image: 'assets/images/projects/wap-ciberseguridad.png',
       tags: ['Python', 'TCP/IP', 'Kali Linux', 'Windows 10', 'VirtualBox', 'Ciberseguridad'],
       liveUrl:  '/Portafolio_LEBM/assets/proyectos/actividad03/index.html',
-      githubUrl: '#',
       featured: true
     },
     {
@@ -49,7 +48,7 @@ export class ProjectsComponent implements AfterViewInit {
       titleEn: 'CCTV Infrastructure Site Survey',
       descriptionEs: 'Levantamiento técnico para un proyecto de videovigilancia de gran escala, considerando más de 150 cámaras, racks, switches, cableado estructurado, charolas portacables y estimación de materiales.',
       descriptionEn: 'Technical site survey for a large-scale video surveillance project involving more than 150 cameras, racks, switches, structured cabling, cable trays, and material estimation.',
-      image: '',
+      image: 'assets/images/projects/cctv-infraestructura.png',
       tags: ['CCTV', 'Redes', 'UTP', 'Racks', 'Infraestructura'],
       featured: true
     },
@@ -59,7 +58,7 @@ export class ProjectsComponent implements AfterViewInit {
       titleEn: 'ZKTeco / ZKTime.Net Migration & Configuration',
       descriptionEs: 'Configuración de equipos biométricos, direccionamiento IP, respaldo de información y preparación de la migración del sistema ZKTime.Net entre equipos.',
       descriptionEn: 'Biometric device configuration, IP addressing, data backup, and preparation for migrating a ZKTime.Net system between computers.',
-      image: '',
+      image: 'assets/images/projects/zkteco-control-acceso.png',
       tags: ['ZKTeco', 'ZKTime.Net', 'Redes', 'Soporte TI', 'Migración'],
       featured: true
     },
@@ -69,7 +68,7 @@ export class ProjectsComponent implements AfterViewInit {
       titleEn: 'Corporate Email & Outlook Support',
       descriptionEs: 'Diagnóstico de conectividad POP3, administración y migración de archivos PST, configuración de cuentas y resolución de incidencias de correo corporativo.',
       descriptionEn: 'POP3 connectivity troubleshooting, PST file administration and migration, account configuration, and corporate email incident resolution.',
-      image: '',
+      image: 'assets/images/projects/outlook-soporte.png',
       tags: ['Outlook', 'POP3', 'PST', 'PowerShell', 'Troubleshooting']
     }
   ];
