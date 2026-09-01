@@ -15,6 +15,7 @@ export interface Project {
   descriptionEn: string;
   image: string;
   tags: string[];
+  category: 'redes' | 'soporte' | 'ciberseguridad';
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
@@ -30,18 +31,10 @@ export interface Project {
 export class ProjectsComponent implements AfterViewInit {
   translate = inject(TranslateService);
 
+  activeFilter = signal<string>('all');
+  academicOpen = signal<boolean>(false);
+
   projects: Project[] = [
-    {
-      id: 1,
-      titleEs: 'Laboratorio de Captura y Transmisión de Eventos',
-      titleEn: 'Event Capture & Transmission Cybersecurity Lab',
-      descriptionEs: 'Laboratorio académico con dos máquinas virtuales. Windows captura eventos de teclado con Python y pynput, agrega marcas temporales y persistencia local, y transmite los registros por TCP hacia un servidor Kali Linux.',
-      descriptionEn: 'Academic lab using two virtual machines. Windows captures keyboard events with Python and pynput, adds timestamps and local persistence, and sends the records over TCP to a Kali Linux server.',
-      image: 'assets/images/projects/wap-ciberseguridad.png',
-      tags: ['Python', 'TCP/IP', 'Kali Linux', 'Windows 10', 'VirtualBox', 'Ciberseguridad'],
-      liveUrl:  '/Portafolio_LEBM/assets/proyectos/actividad03/index.html',
-      featured: true
-    },
     {
       id: 2,
       titleEs: 'Levantamiento de Infraestructura CCTV',
@@ -50,6 +43,7 @@ export class ProjectsComponent implements AfterViewInit {
       descriptionEn: 'Technical site survey for a large-scale video surveillance project involving more than 150 cameras, racks, switches, structured cabling, cable trays, and material estimation.',
       image: 'assets/images/projects/cctv-infraestructura.png',
       tags: ['CCTV', 'Redes', 'UTP', 'Racks', 'Infraestructura'],
+      category: 'redes',
       featured: true
     },
     {
@@ -60,6 +54,7 @@ export class ProjectsComponent implements AfterViewInit {
       descriptionEn: 'Biometric device configuration, IP addressing, data backup, and preparation for migrating a ZKTime.Net system between computers.',
       image: 'assets/images/projects/zkteco-control-acceso.png',
       tags: ['ZKTeco', 'ZKTime.Net', 'Redes', 'Soporte TI', 'Migración'],
+      category: 'redes',
       featured: true
     },
     {
@@ -69,12 +64,60 @@ export class ProjectsComponent implements AfterViewInit {
       descriptionEs: 'Diagnóstico de conectividad POP3, administración y migración de archivos PST, configuración de cuentas y resolución de incidencias de correo corporativo.',
       descriptionEn: 'POP3 connectivity troubleshooting, PST file administration and migration, account configuration, and corporate email incident resolution.',
       image: 'assets/images/projects/outlook-soporte.png',
-      tags: ['Outlook', 'POP3', 'PST', 'PowerShell', 'Troubleshooting']
+      tags: ['Outlook', 'POP3', 'PST', 'PowerShell', 'Troubleshooting'],
+      category: 'soporte'
     }
   ];
 
+  academicProjects: Project[] = [
+    {
+      id: 101,
+      titleEs: 'Laboratorio de Captura y Transmisión de Eventos',
+      titleEn: 'Event Capture & Transmission Cybersecurity Lab',
+      descriptionEs: 'Laboratorio académico con dos máquinas virtuales. Windows captura eventos de teclado con Python y pynput, agrega marcas temporales y persistencia local, y transmite los registros por TCP hacia un servidor Kali Linux.',
+      descriptionEn: 'Academic lab using two virtual machines. Windows captures keyboard events with Python and pynput, adds timestamps and local persistence, and sends the records over TCP to a Kali Linux server.',
+      image: 'assets/images/projects/wap-ciberseguridad.png',
+      tags: ['Python', 'TCP/IP', 'Kali Linux', 'Windows 10', 'VirtualBox', 'Ciberseguridad'],
+      category: 'ciberseguridad',
+      liveUrl: '/Portafolio_LEBM/assets/proyectos/actividad03/index.html',
+      featured: true
+    }
+  ];
+
+  get filteredProjects(): Project[] {
+    const filter = this.activeFilter();
+    if (filter === 'all') return this.projects;
+    return this.projects.filter(project => project.category === filter);
+  }
+
+  setFilter(filter: string) {
+    this.activeFilter.set(filter);
+
+    setTimeout(() => {
+      gsap.fromTo(
+        '.main-projects-grid .project-glass-card',
+        { opacity: 0, y: 20, scale: 0.98 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.35, stagger: 0.05, ease: 'power2.out' }
+      );
+    }, 10);
+  }
+
+  toggleAcademic() {
+    this.academicOpen.update(value => !value);
+
+    if (this.academicOpen()) {
+      setTimeout(() => {
+        gsap.fromTo(
+          '.academic-content .project-glass-card',
+          { opacity: 0, y: 25 },
+          { opacity: 1, y: 0, duration: 0.45, stagger: 0.08, ease: 'power2.out' }
+        );
+      }, 10);
+    }
+  }
+
   ngAfterViewInit() {
-    gsap.utils.toArray<HTMLElement>('.project-glass-card').forEach((card, i) => {
+    gsap.utils.toArray<HTMLElement>('.main-projects-grid .project-glass-card').forEach((card, i) => {
       gsap.from(card, {
         scrollTrigger: { trigger: card, start: 'top 88%' },
         opacity: 0,
