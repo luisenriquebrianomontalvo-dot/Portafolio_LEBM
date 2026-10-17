@@ -61,8 +61,8 @@ export class SkillsComponent implements AfterViewInit {
 
     // Herramientas
     { name: 'VS Code', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg', category: 'tools' },
-    { name: 'VirtualBox', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/virtualbox/virtualbox-original.svg', category: 'tools' },
-    { name: 'Cisco Packet Tracer', icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cisco/cisco-original.svg', category: 'tools' },
+    { name: 'VirtualBox', icon: 'assets/icons/virtualbox.png', category: 'tools' },
+    { name: 'Cisco Packet Tracer', icon: 'assets/icons/cisco-packet-tracer.png', category: 'tools' },
   ];
 
   get filteredSkills(): Skill[] {
