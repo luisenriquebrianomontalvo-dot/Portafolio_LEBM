@@ -32,6 +32,17 @@ export class ProjectsComponent implements AfterViewInit {
 
   projects: Project[] = [
     {
+      id: 5,
+      titleEs: 'INTERAFAS-LAB | Auditoría de Seguridad Web',
+      titleEn: 'INTERAFAS-LAB | Web Security Assessment',
+      descriptionEs: 'Laboratorio académico controlado con Docker: análisis de vulnerabilidades web, tráfico HTTP, enumeración de recursos y documentación técnica de 20 retos.',
+      descriptionEn: 'Controlled Docker-based academic lab: web vulnerability analysis, HTTP traffic inspection, resource enumeration and technical documentation across 20 challenges.',
+      image: '',
+      tags: ['Ciberseguridad', 'Docker', 'OWASP', 'PowerShell', 'HTTP'],
+      liveUrl: '/Portafolio_LEBM/assets/proyectos/interafas-lab/index.html',
+      featured: true
+    },
+    {
       id: 1,
       titleEs: 'Laboratorio de Captura y Transmisión de Eventos',
       titleEn: 'Event Capture & Transmission Cybersecurity Lab',
