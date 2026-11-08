@@ -98,7 +98,7 @@ export class ProjectsComponent implements AfterViewInit {
       liveUrl: '/Portafolio_LEBM/assets/proyectos/interafas-lab/index.html',
       featured: true
     },
-    {
+        {
       id: 16,
       titleEs: 'Actividad 16. La verdad en los bits: Adquisición forense con FTK Imager',
       titleEn: 'Activity 16. Truth in Bits: Forensic Acquisition with FTK Imager',
@@ -108,7 +108,7 @@ export class ProjectsComponent implements AfterViewInit {
       tags: ['Digital Forensics', 'FTK Imager', 'Hashes Verification', 'Raw (dd)', 'Cybersecurity'],
       category: 'ciberseguridad',
       parcial: 'parcial-3',
-      liveUrl: '/Portafolio_LEBM/assets/cv/actividad-16-ftk-imager.pdf',
+      liveUrl: '/Portafolio_LEBM/evidencias/parcial-3/actividad-16',
       featured: true
     }
   ];

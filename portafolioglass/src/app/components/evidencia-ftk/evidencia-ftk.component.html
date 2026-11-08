@@ -1,0 +1,94 @@
+<section class="section evidencia-section" style="padding-top: 100px; min-height: 100vh; position: relative;">
+  <app-starfield [starCount]="40" color1="#ff9500" color2="#ff2d55"></app-starfield>  
+  <div class="container glass-card" style="padding: 40px; margin-bottom: 40px;">
+    
+    <!-- Botón de Retorno -->
+    <div style="margin-bottom: 30px;">
+      <a href="#" class="btn-card-link" style="display: inline-flex; align-items: center; gap: 8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>Volver a Proyectos</span>
+      </a>
+    </div>
+
+    <!-- Encabezado de la Evidencia -->
+    <div class="section-header" style="text-align: left; margin-bottom: 40px;">
+      <span class="section-badge" style="background: rgba(255, 149, 0, 0.15); color: #ff9500;">Evidencia Digital Académica</span>
+      <h2 class="section-title" style="font-size: 2.2rem; margin-top: 10px;">Actividad 16. La verdad en los bits: Adquisición forense con FTK Imager</h2>
+      <p class="section-subtitle" style="margin-left: 0; max-width: 100%;">Análisis forense estructurado y preservación bit a bit de dispositivos de almacenamiento bajo marcos legales.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;" class="evidencia-layout">
+      
+      <!-- Contenido Principal (Procedimiento) -->
+      <div>
+        <h3 style="color: #ff9500; margin-bottom: 15px;">1. Resumen Ejecutivo del Caso</h3>
+        <p style="color: var(--secondary-label); line-height: 1.6; margin-bottom: 25px;">
+          Como parte de los especialistas en el Laboratorio de Informática Forense (LIF), se ejecutó el protocolo de adquisición de material digital vinculado a un incidente donde las políticas de seguridad se vieron corrompidas debido a un <strong>fraude bancario</strong>. El objetivo primordial consistió en realizar una copia idéntica bit a bit utilizando la herramienta especializada <strong>FTK Imager v4.3.1.1</strong>, asegurando la reproducibilidad y verificabilidad del análisis sin alterar la muestra original.
+        </p>
+
+        <h3 style="color: #ff9500; margin-bottom: 15px;">2. Bitácora del Procedimiento Técnico</h3>
+        <ul style="color: var(--secondary-label); line-height: 1.8; margin-bottom: 25px; padding-left: 20px;">
+          <li><strong>Preparación de la Evidencia:</strong> Conexión de la memoria USB General UDisk al ordenador de análisis (omitiendo el bloqueador de escritura físico por entorno controlado de laboratorio).</li>
+          <li><strong>Selección de Origen:</strong> Configuración del origen de adquisición como <em>Physical Drive</em> en la interfaz del software forense.</li>
+          <li><strong>Ficha de Control Interno:</strong> Registro del caso bajo el identificador único <code style="background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px;">InfoCrim-01_21.11.2023</code> con notas de procedencia LIF de la UPSLP.</li>
+          <li><strong>Generación del Formato Universal:</strong> Se optó por una estructura en bruto/cruda (Raw dd), la cual no ejerce compresión y clona fielmente el almacenamiento a bajo nivel.</li>
+        </ul>
+
+        <h3 style="color: #ff9500; margin-bottom: 15px;">3. Reporte de Resultados y Verificación</h3>
+        <p style="color: var(--secondary-label); line-height: 1.6; margin-bottom: 25px;">
+          El proceso se inició formalmente a las <strong>11:48 am</strong> y culminó satisfactoriamente a las <strong>12:22 pm</strong>, con un tiempo total transcurrido de <strong>31:03 minutos</strong>. Se obtuvo la clonación íntegra de un total de <strong>61,440,000 sectores</strong> válidos.
+        </p>
+
+        <!-- Galería de Capturas de Pantalla -->
+        <h3 style="color: #ff9500; margin-top: 40px; margin-bottom: 20px;">4. Galería Forense Documentada</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+          <div class="glass-card" style="padding: 10px; background: rgba(255,255,255,0.03);">
+            <img src="assets/images/projects/ftk-forense.png" alt="Verificación de hashes" style="width: 100%; border-radius: 8px;">
+            <p style="font-size: 0.85rem; color: var(--secondary-label); margin-top: 8px; text-align: center;">Resultados de verificación y emparejamiento de Hashes MD5 y SHA-1.</p>
+          </div>
+          <div class="glass-card" style="padding: 10px; background: rgba(255,255,255,0.03);">
+            <img src="assets/images/projects/wap-ciberseguridad.png" alt="Estructura del directorio" style="width: 100%; border-radius: 8px;">
+            <p style="font-size: 0.85rem; color: var(--secondary-label); margin-top: 8px; text-align: center;">Segmentación e historial de los 21 archivos lógicos generados.</p>
+          </div>
+        </div>
+
+        <!-- Sección de Descargables -->
+        <h3 style="color: #ff9500; margin-top: 40px; margin-bottom: 15px;">5. Documentos Entregables</h3>
+        <div class="glass-card" style="padding: 20px; display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.02);">
+          <div>
+            <h4 style="margin: 0; color: #fff;">Reporte Oficial PDF</h4>
+            <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: var(--secondary-label);">Marco teórico, proceso detallado con capturas completas y conclusión firmado.</p>
+          </div>
+          <a href="/Portafolio_LEBM/assets/cv/actividad-16-ftk-imager.pdf" target="_blank" class="live-action-btn glass-pill">
+            <span>Abrir Reporte de Actividad</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Ficha Técnica Lateral (Estilo Juan Francisco) -->
+      <div>
+        <div class="glass-card" style="padding: 25px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px;">
+          <h3 style="font-size: 1.1rem; letter-spacing: 1px; text-transform: uppercase; color: var(--secondary-label); margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;">Ficha Técnica</h3>
+          <h4 style="font-size: 1.4rem; margin-top: 0; margin-bottom: 20px; color: #fff;">Datos de Control</h4>
+          
+          <div style="display: flex; flex-direction: column; gap: 15px; font-size: 0.95rem; color: var(--secondary-label);">
+            <div><strong style="color: #fff; display: block;">Alumno:</strong> Luis Enrique Briano Montalvo</div>
+            <div><strong style="color: #fff; display: block;">Matrícula:</strong> 184914</div>
+            <div><strong style="color: #fff; display: block;">Materia:</strong> Ciberseguridad Académica / CNO IV</div>
+            <div><strong style="color: #fff; display: block;">Bloque / Parcial:</strong> Tercer Parcial</div>
+            <div><strong style="color: #fff; display: block;">Herramienta:</strong> AccessData FTK Imager v4.3.1.1</div>
+            <div><strong style="color: #fff; display: block;">Evidencia Analizada:</strong> Memoria USB General UDisk Device (30 GB)</div>
+            <div><strong style="color: #fff; display: block;">Sectores Copiados:</strong> 61,440,000</div>
+            <div><strong style="color: #fff; display: block;">Hash MD5 Integridad:</strong> <span style="font-family: monospace; font-size: 0.85rem; word-break: break-all;">98b738420561b1637ab4c96ae26cbf55</span></div>
+            <div><strong style="color: #fff; display: block;">Hash SHA-1 Integridad:</strong> <span style="font-family: monospace; font-size: 0.85rem; word-break: break-all;">84b4e52fb1724e0b4aaf9d0174994906439c59</span></div>
+            <div><strong style="color: #fff; display: block;">Resultado Forense:</strong> Copia Maestra Certificada (Sin sectores defectuosos).</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
