@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateService } from '../../services/translate.service';
 import { StarfieldComponent } from '../starfield/starfield.component';
@@ -12,6 +12,12 @@ import { StarfieldComponent } from '../starfield/starfield.component';
 })
 export class EvidenciaFtkComponent {
   translate = inject(TranslateService);
+
+  @Output() closeReport = new EventEmitter<void>();
+
+  emitClose() {
+    this.closeReport.emit();
+  }
 
   t(key: string) {
     return this.translate.t(key);

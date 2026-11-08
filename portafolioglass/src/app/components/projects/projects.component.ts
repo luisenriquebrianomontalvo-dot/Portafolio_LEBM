@@ -2,6 +2,7 @@ import { Component, inject, signal, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateService } from '../../services/translate.service';
 import { StarfieldComponent } from '../starfield/starfield.component';
+import { EvidenciaFtkComponent } from '../evidencia-ftk/evidencia-ftk.component'; // Importación de la nueva vista
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -25,7 +26,7 @@ export interface Project {
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, StarfieldComponent],
+  imports: [CommonModule, StarfieldComponent, EvidenciaFtkComponent], // Registramos tu componente aquí
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
@@ -35,6 +36,7 @@ export class ProjectsComponent implements AfterViewInit {
   activeFilter = signal<string>('all');
   activeParcialFilter = signal<string>('all');
   academicOpen = signal<boolean>(false);
+  selectedForensic = signal<boolean>(false); // Señal que controla si se ve el reporte extendido
 
   projects: Project[] = [
     {
@@ -98,7 +100,7 @@ export class ProjectsComponent implements AfterViewInit {
       liveUrl: '/Portafolio_LEBM/assets/proyectos/interafas-lab/index.html',
       featured: true
     },
-        {
+    {
       id: 16,
       titleEs: 'Actividad 16. La verdad en los bits: Adquisición forense con FTK Imager',
       titleEn: 'Activity 16. Truth in Bits: Forensic Acquisition with FTK Imager',
@@ -108,7 +110,6 @@ export class ProjectsComponent implements AfterViewInit {
       tags: ['Digital Forensics', 'FTK Imager', 'Hashes Verification', 'Raw (dd)', 'Cybersecurity'],
       category: 'ciberseguridad',
       parcial: 'parcial-3',
-      liveUrl: '/Portafolio_LEBM/evidencias/parcial-3/actividad-16',
       featured: true
     }
   ];
@@ -158,6 +159,16 @@ export class ProjectsComponent implements AfterViewInit {
         );
       }, 10);
     }
+  }
+
+  // Métodos interactivos de control de la vista
+  openForensicReport() {
+    this.selectedForensic.set(true);
+    window.scrollTo({ top: document.getElementById('projects')?.offsetTop, behavior: 'smooth' });
+  }
+
+  closeForensicReport() {
+    this.selectedForensic.set(false);
   }
 
   ngAfterViewInit() {
