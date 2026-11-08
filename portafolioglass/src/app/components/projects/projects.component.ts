@@ -1,8 +1,8 @@
-import { Component, inject, signal, AfterViewInit } from '@angular/core';
+import { Component, inject, signal, AfterViewInit, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateService } from '../../services/translate.service';
 import { StarfieldComponent } from '../starfield/starfield.component';
-import { EvidenciaFtkComponent } from '../evidencia-ftk/evidencia-ftk.component'; // Importación de la nueva vista
+import { EvidenciaFtkComponent } from '../evidencia-ftk/evidencia-ftk.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -26,17 +26,17 @@ export interface Project {
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, StarfieldComponent, EvidenciaFtkComponent], // Registramos tu componente aquí
+  imports: [CommonModule, StarfieldComponent, EvidenciaFtkComponent],
   templateUrl: './projects.component.html',
   styleUrls: ['./projects.component.scss']
 })
-export class ProjectsComponent implements AfterViewInit {
+export class ProjectsComponent implements OnInit, AfterViewInit {
   translate = inject(TranslateService);
 
   activeFilter = signal<string>('all');
   activeParcialFilter = signal<string>('all');
   academicOpen = signal<boolean>(false);
-  selectedForensic = signal<boolean>(false); // Señal que controla si se ve el reporte extendido
+  selectedForensic = signal<boolean>(false);
 
   projects: Project[] = [
     {
@@ -114,6 +114,23 @@ export class ProjectsComponent implements AfterViewInit {
     }
   ];
 
+  ngOnInit(): void {
+    // Sistema inteligente de Hash nativo para enlaces directos independientes
+    this.checkRoutingHash();
+
+    // Escuchamos si el usuario cambia el hash manualmente sin recargar
+    window.addEventListener('hashchange', () => this.checkRoutingHash());
+  }
+
+  private checkRoutingHash() {
+    const currentHash = window.location.hash;
+    if (currentHash === '#/actividad-16') {
+      this.selectedForensic.set(true);
+    } else {
+      this.selectedForensic.set(false);
+    }
+  }
+
   get filteredProjects(): Project[] {
     const filter = this.activeFilter();
     if (filter === 'all') return this.projects;
@@ -129,8 +146,7 @@ export class ProjectsComponent implements AfterViewInit {
   setFilter(filter: string) {
     this.activeFilter.set(filter);
     setTimeout(() => {
-      gsap.fromTo(
-        '.main-projects-grid .project-glass-card',
+      gsap.fromTo('.main-projects-grid .project-glass-card',
         { opacity: 0, y: 20, scale: 0.98 },
         { opacity: 1, y: 0, scale: 1, duration: 0.35, stagger: 0.05, ease: 'power2.out' }
       );
@@ -140,8 +156,7 @@ export class ProjectsComponent implements AfterViewInit {
   setParcialFilter(parcial: string) {
     this.activeParcialFilter.set(parcial);
     setTimeout(() => {
-      gsap.fromTo(
-        '.academic-content .project-glass-card',
+      gsap.fromTo('.academic-content .project-glass-card',
         { opacity: 0, y: 20, scale: 0.98 },
         { opacity: 1, y: 0, scale: 1, duration: 0.35, stagger: 0.05, ease: 'power2.out' }
       );
@@ -152,8 +167,7 @@ export class ProjectsComponent implements AfterViewInit {
     this.academicOpen.update(value => !value);
     if (this.academicOpen()) {
       setTimeout(() => {
-        gsap.fromTo(
-          '.academic-content .project-glass-card',
+        gsap.fromTo('.academic-content .project-glass-card',
           { opacity: 0, y: 25 },
           { opacity: 1, y: 0, duration: 0.45, stagger: 0.08, ease: 'power2.out' }
         );
@@ -161,37 +175,34 @@ export class ProjectsComponent implements AfterViewInit {
     }
   }
 
-  // Métodos interactivos de control de la vista
   openForensicReport() {
-    this.selectedForensic.set(true);
-    window.scrollTo({ top: document.getElementById('projects')?.offsetTop, behavior: 'smooth' });
+    window.location.hash = '/actividad-16'; // Setea el hash directo en la URL
+    setTimeout(() => {
+      window.scrollTo({ top: document.getElementById('projects')?.offsetTop, behavior: 'smooth' });
+    }, 50);
   }
 
   closeForensicReport() {
-    this.selectedForensic.set(false);
+    window.location.hash = ''; // Limpia la barra de navegación al regresar
+    setTimeout(() => {
+      window.scrollTo({ top: document.getElementById('projects')?.offsetTop, behavior: 'smooth' });
+    }, 50);
   }
 
   ngAfterViewInit() {
     gsap.utils.toArray<HTMLElement>('.main-projects-grid .project-glass-card').forEach((card, i) => {
       gsap.from(card, {
         scrollTrigger: { trigger: card, start: 'top 88%' },
-        opacity: 0,
-        y: 40,
-        duration: 0.6,
-        delay: (i % 3) * 0.1,
-        ease: 'power2.out'
+        opacity: 0, y: 40, duration: 0.6, delay: (i % 3) * 0.1, ease: 'power2.out'
       });
     });
   }
 
   onCardMouseMove(event: MouseEvent, card: HTMLElement) {
     const rect = card.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = ((y - centerY) / centerY) * -6;
-    const rotateY = ((x - centerX) / centerX) * 6;
+    const x = event.clientX - rect.left, y = event.clientY - rect.top;
+    const rotateX = ((y - (rect.height / 2)) / (rect.height / 2)) * -6;
+    const rotateY = ((x - (rect.width / 2)) / (rect.width / 2)) * 6;
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
   }
 
@@ -199,15 +210,7 @@ export class ProjectsComponent implements AfterViewInit {
     card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
   }
 
-  title(p: Project) {
-    return this.translate.lang() === 'es' ? p.titleEs : p.titleEn;
-  }
-
-  desc(p: Project) {
-    return this.translate.lang() === 'es' ? p.descriptionEs : p.descriptionEn;
-  }
-
-  t(key: string) {
-    return this.translate.t(key);
-  }
+  title(p: Project) { return this.translate.lang() === 'es' ? p.titleEs : p.titleEn; }
+  desc(p: Project) { return this.translate.lang() === 'es' ? p.descriptionEs : p.descriptionEn; }
+  t(key: string) { return this.translate.t(key); }
 }
