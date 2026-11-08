@@ -16,6 +16,7 @@ export interface Project {
   image: string;
   tags: string[];
   category: 'redes' | 'soporte' | 'ciberseguridad';
+  parcial?: 'parcial-1' | 'parcial-2' | 'parcial-3' | 'final'; // Clasificación académica por parciales
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
@@ -32,32 +33,11 @@ export class ProjectsComponent implements AfterViewInit {
   translate = inject(TranslateService);
 
   activeFilter = signal<string>('all');
+  activeParcialFilter = signal<string>('all'); // Filtro interno de parciales
   academicOpen = signal<boolean>(false);
 
+  // Lista principal de proyectos unificada por categorías profesionales
   projects: Project[] = [
-    {
-      id: 5,
-      titleEs: 'INTERAFAS-LAB | Auditoría de Seguridad Web',
-      titleEn: 'INTERAFAS-LAB | Web Security Assessment',
-      descriptionEs: 'Laboratorio académico controlado con Docker: análisis de vulnerabilidades web, tráfico HTTP, enumeración de recursos y documentación técnica de 20 retos.',
-      descriptionEn: 'Controlled Docker-based academic lab: web vulnerability analysis, HTTP traffic inspection, resource enumeration and technical documentation across 20 challenges.',
-      image: '',
-      tags: ['Ciberseguridad', 'Docker', 'OWASP', 'PowerShell', 'HTTP'],
-      liveUrl: '/Portafolio_LEBM/assets/proyectos/interafas-lab/index.html',
-      featured: true
-    },
-    {
-      id: 1,
-      titleEs: 'Laboratorio de Captura y Transmisión de Eventos',
-      titleEn: 'Event Capture & Transmission Cybersecurity Lab',
-      descriptionEs: 'Laboratorio académico con dos máquinas virtuales. Windows captura eventos de teclado con Python y pynput, agrega marcas temporales y persistencia local, y transmite los registros por TCP hacia un servidor Kali Linux.',
-      descriptionEn: 'Academic lab using two virtual machines. Windows captures keyboard events with Python and pynput, adds timestamps and local persistence, and sends the records over TCP to a Kali Linux server.',
-      image: '/assets/images/wap-ciberseguridad.png',
-      tags: ['Python', 'TCP/IP', 'Kali Linux', 'Windows 10', 'VirtualBox', 'Ciberseguridad'],
-      liveUrl:  '/Portafolio_LEBM/assets/proyectos/actividad03/index.html',
-      githubUrl: '#',
-      featured: true
-    },
     {
       id: 2,
       titleEs: 'Levantamiento de Infraestructura CCTV',
@@ -92,9 +72,10 @@ export class ProjectsComponent implements AfterViewInit {
     }
   ];
 
+  // Tu apartado especializado de Ciberseguridad Académica dividido exactamente por tus parciales
   academicProjects: Project[] = [
     {
-      id: 101,
+      id: 1,
       titleEs: 'Laboratorio de Captura y Transmisión de Eventos',
       titleEn: 'Event Capture & Transmission Cybersecurity Lab',
       descriptionEs: 'Laboratorio académico con dos máquinas virtuales. Windows captura eventos de teclado con Python y pynput, agrega marcas temporales y persistencia local, y transmite los registros por TCP hacia un servidor Kali Linux.',
@@ -102,15 +83,50 @@ export class ProjectsComponent implements AfterViewInit {
       image: 'assets/images/projects/wap-ciberseguridad.png',
       tags: ['Python', 'TCP/IP', 'Kali Linux', 'Windows 10', 'VirtualBox', 'Ciberseguridad'],
       category: 'ciberseguridad',
+      parcial: 'parcial-1', // Evaluado en el primer parcial
       liveUrl: '/Portafolio_LEBM/assets/proyectos/actividad03/index.html',
+      featured: true
+    },
+    {
+      id: 5,
+      titleEs: 'INTERAFAS-LAB | Auditoría de Seguridad Web',
+      titleEn: 'INTERAFAS-LAB | Web Security Assessment',
+      descriptionEs: 'Laboratorio académico controlado con Docker: análisis de vulnerabilidades web, tráfico HTTP, enumeración de recursos y documentación técnica de 20 retos.',
+      descriptionEn: 'Controlled Docker-based academic lab: web vulnerability analysis, HTTP traffic inspection, resource enumeration and technical documentation across 20 challenges.',
+      image: '',
+      tags: ['Ciberseguridad', 'Docker', 'OWASP', 'PowerShell', 'HTTP'],
+      category: 'ciberseguridad',
+      parcial: 'parcial-2', // Evaluado en tu segundo parcial
+      liveUrl: '/Portafolio_LEBM/assets/proyectos/interafas-lab/index.html',
+      featured: true
+    },
+    {
+      id: 16,
+      titleEs: 'Actividad 16. La verdad en los bits: Adquisición forense con FTK Imager',
+      titleEn: 'Activity 16. Truth in Bits: Forensic Acquisition with FTK Imager',
+      descriptionEs: 'Adquisición forense bit a bit de una memoria USB simulando un incidente de fraude bancario. Análisis realizado en el LIF de la UPSLP, logrando copiar 61,440,000 sectores con verificación íntegra mediante Hashes (MD5: 98b738420561b1637ab4c96ae26cbf55 | SHA-1: 84b4e52fb1724e0b4aaf9d0174994906439c59) completado en 31:03 minutos.',
+      descriptionEn: 'Bit-by-bit forensic acquisition of a USB drive simulating a banking fraud incident. Analysis performed at the UPSLP LIF lab, copying 61,440,000 sectors with integrity verified via Hashes (MD5: 98b738420561b1637ab4c96ae26cbf55 | SHA-1: 84b4e52fb1724e0b4aaf9d0174994906439c59) completed in 31:03 minutes.',
+      image: 'assets/images/projects/ftk-forense.png',
+      tags: ['Digital Forensics', 'FTK Imager', 'Hashes Verification', 'Raw (dd)', 'Cybersecurity'],
+      category: 'ciberseguridad',
+      parcial: 'parcial-3', // Tu práctica real de hoy en el 3° Parcial
+      liveUrl: '/Portafolio_LEBM/assets/cv/actividad-16-ftk-imager.pdf', // Tu PDF ubicado en tus recursos
       featured: true
     }
   ];
 
+  // Getter de filtrado para los proyectos principales comerciales
   get filteredProjects(): Project[] {
     const filter = this.activeFilter();
     if (filter === 'all') return this.projects;
     return this.projects.filter(project => project.category === filter);
+  }
+
+  // Getter inteligente para filtrar las actividades escolares de Ciberseguridad por bloque/parcial
+  get filteredAcademicProjects(): Project[] {
+    const parcialFilter = this.activeParcialFilter();
+    if (parcialFilter === 'all') return this.academicProjects;
+    return this.academicProjects.filter(project => project.parcial === parcialFilter);
   }
 
   setFilter(filter: string) {
@@ -119,6 +135,19 @@ export class ProjectsComponent implements AfterViewInit {
     setTimeout(() => {
       gsap.fromTo(
         '.main-projects-grid .project-glass-card',
+        { opacity: 0, y: 20, scale: 0.98 },
+        { opacity: 1, y: 0, scale: 1, duration: 0.35, stagger: 0.05, ease: 'power2.out' }
+      );
+    }, 10);
+  }
+
+  // Permite conmutar el filtro secundario de los parciales en la UI con animaciones fluidas
+  setParcialFilter(parcial: string) {
+    this.activeParcialFilter.set(parcial);
+
+    setTimeout(() => {
+      gsap.fromTo(
+        '.academic-content .project-glass-card',
         { opacity: 0, y: 20, scale: 0.98 },
         { opacity: 1, y: 0, scale: 1, duration: 0.35, stagger: 0.05, ease: 'power2.out' }
       );

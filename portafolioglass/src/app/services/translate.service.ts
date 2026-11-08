@@ -44,6 +44,25 @@ const translations: Record<Lang, Record<string, string>> = {
     'projects.code': 'Ver código',
     'projects.preview': 'Vista previa',
     'projects.placeholder': 'Espacio para imagen del proyecto',
+    
+    // Categorías de Filtros Profesionales (Nuevas)
+    'projects.filter.all': 'Todos los Proyectos',
+    'projects.filter.redes': 'Redes & Infraestructura',
+    'projects.filter.soporte': 'Soporte de Sistemas TI',
+    
+    // Apartado Escolarizado de Ciberseguridad (Nuevas)
+    'academic.btn.open': '📂 Ver Bitácora de Ciberseguridad',
+    'academic.btn.close': '📁 Ocultar Bitácora de Ciberseguridad',
+    'academic.title': 'Asignatura: Ciberseguridad Académica',
+    'academic.subtitle': 'Evidencias, auditorías y laboratorios prácticos organizados por bloques de evaluación.',
+    
+    // Filtros por Bloques / Parciales (Nuevas)
+    'parcial.all': 'Todas las Actividades',
+    'parcial.1': '1° Parcial',
+    'parcial.2': '2° Parcial',
+    'parcial.3': '3° Parcial',
+    'parcial.final': 'Evaluación Final',
+
     // Experience
     'experience.title': 'Experiencia Laboral',
     'experience.subtitle': 'Trayectoria profesional y proyectos destacados',
@@ -107,6 +126,25 @@ const translations: Record<Lang, Record<string, string>> = {
     'projects.code': 'View Code',
     'projects.preview': 'Preview',
     'projects.placeholder': 'Project Image Placeholder',
+    
+    // Professional Filter Categories (New)
+    'projects.filter.all': 'All Projects',
+    'projects.filter.redes': 'Networks & Infrastructure',
+    'projects.filter.soporte': 'IT Systems Support',
+    
+    // Cybersecurity Academic Section (New)
+    'academic.btn.open': '📂 Open Cybersecurity Log',
+    'academic.btn.close': '📁 Close Cybersecurity Log',
+    'academic.title': 'Course: Academic Cybersecurity',
+    'academic.subtitle': 'Evidence, technical assessments and practical labs organized by academic terms.',
+    
+    // Term / Partial Filters (New)
+    'parcial.all': 'All Activities',
+    'parcial.1': '1st Term',
+    'parcial.2': '2nd Term',
+    'parcial.3': '3rd Term',
+    'parcial.final': 'Final Exam',
+
     // Experience
     'experience.title': 'Work Experience',
     'experience.subtitle': 'My professional journey and career highlights',
