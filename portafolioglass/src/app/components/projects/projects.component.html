@@ -24,7 +24,6 @@
     <!-- Grid Principal de Proyectos -->
     <div class="projects-grid main-projects-grid">
       @for (project of filteredProjects; track project.id) {
-
         <article
           #card
           class="project-glass-card glass-card"
@@ -95,7 +94,6 @@
             </div>
           </div>
         </article>
-
       }
     </div>
 
@@ -121,7 +119,7 @@
       @if (academicOpen()) {
         <div class="academic-content">
           
-          <!-- Sub-filtros por Parciales / Bloques Académicos -->
+          <!-- Sub-filtros por Parciales Académicos -->
           <div class="project-filters academic-filters" style="margin-top: 15px; margin-bottom: 25px;" aria-label="Filtros de parciales">
             <button class="filter-btn" [class.active]="activeParcialFilter() === 'all'" (click)="setParcialFilter('all')">
               {{ t('parcial.all') }}
@@ -143,7 +141,6 @@
           <!-- Grid de Renderizado de Actividades Escolares -->
           <div class="projects-grid">
             @for (project of filteredAcademicProjects; track project.id) {
-
               <article
                 #card
                 class="project-glass-card glass-card"
@@ -214,6 +211,10 @@
                   </div>
                 </div>
               </article>
-
-            } @empty {
-              <!-- Mensaje elegante por si algún parcial aún no cuenta con entregables cargados -->
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

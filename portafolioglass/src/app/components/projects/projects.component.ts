@@ -16,7 +16,7 @@ export interface Project {
   image: string;
   tags: string[];
   category: 'redes' | 'soporte' | 'ciberseguridad';
-  parcial?: 'parcial-1' | 'parcial-2' | 'parcial-3' | 'final'; // Clasificación académica por parciales
+  parcial?: 'parcial-1' | 'parcial-2' | 'parcial-3' | 'final';
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
@@ -33,10 +33,9 @@ export class ProjectsComponent implements AfterViewInit {
   translate = inject(TranslateService);
 
   activeFilter = signal<string>('all');
-  activeParcialFilter = signal<string>('all'); // Filtro interno de parciales
+  activeParcialFilter = signal<string>('all');
   academicOpen = signal<boolean>(false);
 
-  // Lista principal de proyectos unificada por categorías profesionales
   projects: Project[] = [
     {
       id: 2,
@@ -72,7 +71,6 @@ export class ProjectsComponent implements AfterViewInit {
     }
   ];
 
-  // Tu apartado especializado de Ciberseguridad Académica dividido exactamente por tus parciales
   academicProjects: Project[] = [
     {
       id: 1,
@@ -83,7 +81,7 @@ export class ProjectsComponent implements AfterViewInit {
       image: 'assets/images/projects/wap-ciberseguridad.png',
       tags: ['Python', 'TCP/IP', 'Kali Linux', 'Windows 10', 'VirtualBox', 'Ciberseguridad'],
       category: 'ciberseguridad',
-      parcial: 'parcial-1', // Evaluado en el primer parcial
+      parcial: 'parcial-1',
       liveUrl: '/Portafolio_LEBM/assets/proyectos/actividad03/index.html',
       featured: true
     },
@@ -96,7 +94,7 @@ export class ProjectsComponent implements AfterViewInit {
       image: '',
       tags: ['Ciberseguridad', 'Docker', 'OWASP', 'PowerShell', 'HTTP'],
       category: 'ciberseguridad',
-      parcial: 'parcial-2', // Evaluado en tu segundo parcial
+      parcial: 'parcial-2',
       liveUrl: '/Portafolio_LEBM/assets/proyectos/interafas-lab/index.html',
       featured: true
     },
@@ -109,20 +107,18 @@ export class ProjectsComponent implements AfterViewInit {
       image: 'assets/images/projects/ftk-forense.png',
       tags: ['Digital Forensics', 'FTK Imager', 'Hashes Verification', 'Raw (dd)', 'Cybersecurity'],
       category: 'ciberseguridad',
-      parcial: 'parcial-3', // Tu práctica real de hoy en el 3° Parcial
-      liveUrl: '/Portafolio_LEBM/assets/cv/actividad-16-ftk-imager.pdf', // Tu PDF ubicado en tus recursos
+      parcial: 'parcial-3',
+      liveUrl: '/Portafolio_LEBM/assets/cv/actividad-16-ftk-imager.pdf',
       featured: true
     }
   ];
 
-  // Getter de filtrado para los proyectos principales comerciales
   get filteredProjects(): Project[] {
     const filter = this.activeFilter();
     if (filter === 'all') return this.projects;
     return this.projects.filter(project => project.category === filter);
   }
 
-  // Getter inteligente para filtrar las actividades escolares de Ciberseguridad por bloque/parcial
   get filteredAcademicProjects(): Project[] {
     const parcialFilter = this.activeParcialFilter();
     if (parcialFilter === 'all') return this.academicProjects;
@@ -131,7 +127,6 @@ export class ProjectsComponent implements AfterViewInit {
 
   setFilter(filter: string) {
     this.activeFilter.set(filter);
-
     setTimeout(() => {
       gsap.fromTo(
         '.main-projects-grid .project-glass-card',
@@ -141,10 +136,8 @@ export class ProjectsComponent implements AfterViewInit {
     }, 10);
   }
 
-  // Permite conmutar el filtro secundario de los parciales en la UI con animaciones fluidas
   setParcialFilter(parcial: string) {
     this.activeParcialFilter.set(parcial);
-
     setTimeout(() => {
       gsap.fromTo(
         '.academic-content .project-glass-card',
@@ -156,7 +149,6 @@ export class ProjectsComponent implements AfterViewInit {
 
   toggleAcademic() {
     this.academicOpen.update(value => !value);
-
     if (this.academicOpen()) {
       setTimeout(() => {
         gsap.fromTo(
@@ -189,7 +181,6 @@ export class ProjectsComponent implements AfterViewInit {
     const centerY = rect.height / 2;
     const rotateX = ((y - centerY) / centerY) * -6;
     const rotateY = ((x - centerX) / centerX) * 6;
-
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
   }
 
